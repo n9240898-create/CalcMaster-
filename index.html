@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator master </title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 via-slate-100 to-indigo-100 text-gray-900">
+
+<!-- Navbar -->
+
+<header class="bg-white/90 backdrop-blur shadow sticky top-0 z-50">
+
+  <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+
+    <h1 class="text-4xl font-black text-blue-700">
+      CalcMaster
+    </h1>
+
+    <input
+      type="text"
+      placeholder="Search calculators..."
+      class="w-full md:w-96 px-4 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+
+  </div>
+
+</header>
+
+<!-- Hero -->
+
+<section class="max-w-7xl mx-auto px-4 py-14">
+
+  <div class="relative overflow-hidden rounded-[40px] shadow-2xl">
+
+    <img
+      src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1600&auto=format&fit=crop"
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <div class="relative text-white p-12 text-center">
+
+      <h2 class="text-5xl md:text-6xl font-black mb-6">
+        Free Online Calculators
+      </h2>
+
+      <p class="text-lg text-gray-200 max-w-3xl mx-auto leading-8">
+        Financial, Health, Math and Currency calculators.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Calculators -->
+
+<section class="max-w-7xl mx-auto px-4 pb-20">
+
+  <h3 class="text-4xl font-black mb-10 text-center">
+    Popular Calculators
+  </h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- EMI -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+      <img
+        src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+        <h4 class="text-2xl font-bold mb-4">
+          EMI Calculator
+        </h4>
+
+        <input id="loan" type="number" placeholder="Loan Amount"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="rate" type="number" placeholder="Interest Rate"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="years" type="number" placeholder="Years"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+        <button onclick="calculateEMI()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Calculate EMI
+        </button>
+
+        <p id="emiResult"
+        class="mt-4 text-lg font-bold text-green-600"></p>
+
+      </div>
+
+    </div>
+
+    <!-- BMI -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+      <img
+        src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+        <h4 class="text-2xl font-bold mb-4">
+          BMI Calculator
+        </h4>
+
+        <input id="weight" type="number" placeholder="Weight (kg)"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="height" type="number" placeholder="Height (cm)"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+        <button onclick="calculateBMI()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Calculate BMI
+        </button>
+
+        <p id="bmiResult"
+        class="mt-4 text-lg font-bold text-blue-600"></p>
+
+      </div>
+
+    </div>
+
+    <!-- Compound Interest -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+      <img
+        src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+<h4 class="text-2xl font-bold mb-4">
+          Compound Interest
+        </h4>
+
+        <input id="principal" type="number" placeholder="Principal"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="interest" type="number" placeholder="Interest Rate"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="time" type="number" placeholder="Years"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <select id="compoundType"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+          <option value="1">Yearly</option>
+          <option value="12">Monthly</option>
+          <option value="365">Daily</option>
+
+        </select>
+
+        <button onclick="calculateCompound()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Calculate Interest
+        </button>
+
+        <p id="compoundResult"
+        class="mt-4 text-lg font-bold text-purple-600"></p>
+
+      </div>
+
+    </div>
+
+    <!-- SIP -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+      <img
+        src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+        <h4 class="text-2xl font-bold mb-4">
+          SIP Calculator
+        </h4>
+
+        <input id="sipMonthly" type="number" placeholder="Monthly Investment"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="sipRate" type="number" placeholder="Return %"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="sipYears" type="number" placeholder="Years"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+        <button onclick="calculateSIP()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Calculate SIP
+        </button>
+
+        <p id="sipResult"
+        class="mt-4 text-lg font-bold text-blue-600"></p>
+
+      </div>
+
+    </div>
+
+    <!-- GST -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+      <img
+        src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+        <h4 class="text-2xl font-bold mb-4">
+          GST Calculator
+        </h4>
+
+        <input id="gstAmount" type="number" placeholder="Amount"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="gstRate" type="number" placeholder="GST %"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+        <button onclick="calculateGST()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Calculate GST
+        </button>
+
+        <p id="gstResult"
+        class="mt-4 text-lg font-bold text-red-600"></p>
+
+      </div>
+
+    </div>
+
+    <!-- Currency Converter -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+      <img
+        src="https://images.unsplash.com/photo-1502920917128-1aa500764ce7?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+        <h4 class="text-2xl font-bold mb-4">
+          Currency Converter
+        </h4>
+
+        <input id="usd" type="number" placeholder="USD Amount"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+        <button onclick="convertCurrency()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Convert to INR
+        </button>
+
+        <p id="currencyResult"
+        class="mt-4 text-lg font-bold text-green-600"></p>
+
+      </div>
+
+    </div>
+
+    <!-- Calories -->
+
+    <div class="bg-white/95 backdrop-blur rounded-3xl shadow-xl overflow-hidden">
+
+<img
+        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop"
+        class="w-full h-44 object-cover"
+      >
+
+      <div class="p-6">
+
+        <h4 class="text-2xl font-bold mb-4">
+          Calorie Counter
+        </h4>
+
+        <input id="ageCal" type="number" placeholder="Age"
+        class="w-full border rounded-xl px-4 py-3 mb-3">
+
+        <input id="weightCal" type="number" placeholder="Weight (kg)"
+        class="w-full border rounded-xl px-4 py-3 mb-4">
+
+        <button onclick="calculateCalories()"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-bold transition">
+          Calculate Calories
+        </button>
+
+        <p id="calorieResult"
+        class="mt-4 text-lg font-bold text-orange-600"></p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="bg-black text-white py-10 text-center">
+
+  <h4 class="text-2xl font-bold mb-3">
+    CalcMaster
+  </h4>
+
+  <p class="text-gray-400">
+    Free online calculators for everyone.
+  </p>
+
+</footer>
+
+<script>
+
+function calculateEMI() {
+
+  let P = parseFloat(document.getElementById('loan').value);
+  let annualRate = parseFloat(document.getElementById('rate').value);
+  let years = parseFloat(document.getElementById('years').value);
+
+  let r = annualRate / 12 / 100;
+  let n = years * 12;
+
+  let emi =
+    (P * r * Math.pow(1 + r, n)) /
+    (Math.pow(1 + r, n) - 1);
+
+  document.getElementById('emiResult').innerText =
+    'Monthly EMI: ₹' + emi.toFixed(2);
+}
+
+function calculateBMI() {
+
+  let weight =
+    parseFloat(document.getElementById('weight').value);
+
+  let height =
+    parseFloat(document.getElementById('height').value) / 100;
+
+  let bmi = weight / (height * height);
+
+  document.getElementById('bmiResult').innerText =
+    'BMI: ' + bmi.toFixed(1);
+}
+
+function calculateCompound() {
+
+  let p =
+    parseFloat(document.getElementById('principal').value);
+
+  let r =
+    parseFloat(document.getElementById('interest').value);
+
+  let t =
+    parseFloat(document.getElementById('time').value);
+
+  let n =
+    parseFloat(document.getElementById('compoundType').value);
+
+  let amount =
+    p * Math.pow((1 + (r / 100) / n), n * t);
+
+  document.getElementById('compoundResult').innerText =
+    'Future Value: ₹' + amount.toFixed(2);
+}
+
+function calculateSIP() {
+
+  let monthly =
+    parseFloat(document.getElementById('sipMonthly').value);
+
+  let rate =
+    parseFloat(document.getElementById('sipRate').value) / 100 / 12;
+
+  let years =
+    parseFloat(document.getElementById('sipYears').value);
+
+  let months = years * 12;
+
+  let future =
+    monthly *
+    (((Math.pow(1 + rate, months)) - 1) / rate) *
+    (1 + rate);
+
+  document.getElementById('sipResult').innerText =
+    'Future Value: ₹' + future.toFixed(2);
+}
+
+function calculateGST() {
+
+  let amount =
+    parseFloat(document.getElementById('gstAmount').value);
+
+  let gst =
+    parseFloat(document.getElementById('gstRate').value);
+
+  let total =
+    amount + (amount * gst / 100);
+
+  document.getElementById('gstResult').innerText =
+    'Total Amount: ₹' + total.toFixed(2);
+}
+
+function convertCurrency() {
+
+  let usd =
+    parseFloat(document.getElementById('usd').value);
+
+  let inr = usd * 83;
+
+  document.getElementById('currencyResult').innerText =
+    'INR: ₹' + inr.toFixed(2);
+}
+
+function calculateCalories() {
+
+  let age =
+    parseFloat(document.getElementById('ageCal').value);
+
+  let weight =
+    parseFloat(document.getElementById('weightCal').value);
+
+  let calories =
+    10 * weight + 6.25 * 170 - 5 * age + 5;
+
+  document.getElementById('calorieResult').innerText =
+    'Estimated Calories: ' + calories.toFixed(0);
+}
+
+</script>
+
+</body>
+</html>
